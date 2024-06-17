@@ -3,10 +3,6 @@
 //  TestUserDefaultsBindingsInStoryboard
 //
 //  Created by ... on 17.06.24.
-//  - add slider and label to view of ViewController in IB storyboard
-//	- add MenuItem to windows menu in Application Scene
-//		When running the app this menu item remains disabled as no action is connected
-//	- bind value of the created menu item to the shared user defaults
 //
 //
 
@@ -14,7 +10,10 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+	
+	/// Overwritten to register the default values. Register could take place later in te individual
+	/// ViewController init constructors, but must be done before the corresponding nib is
+	/// being loaded. Registering does not store any defaults until they have been changed!
 	override init() {
 		super.init()
 		UserDefaults.standard.register(defaults: ["first": 0.0
